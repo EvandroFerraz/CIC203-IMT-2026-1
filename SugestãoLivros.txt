@@ -1,0 +1,18 @@
+Olá, pessoal.
+
+Para aqueles que desejam estudar além da sala de aula, recomendo as seguintes obras que abordam a teoria e a prática de Estruturas de Dados:
+
+1- Estruturas de Dados & Algoritmos em Java - Michael T. Goodrich e Roberto Tamassia.
+
+2- Algoritmos e Estruturas de Dados em Linguagem C - André Ricardo Backes.
+
+3- Algoritmos - Thomas H. Cormen; Charles E. Leiserson; Ronald L. Rivest; et al.
+	/\ Este livro possui um conteúdo mais avançado. Leiam apenas se estiverem curiosos, pois ele aborda assuntos que ainda não veremos neste semestre.
+
+Por questões de direitos autorais e em conformidade com as diretrizes da faculdade, não tenho permissão para compartilhar os PDFs dessas obras diretamente com a turma. No entanto, como são livros clássicos e amplamente adotados, vocês conseguirão encontrá-los facilmente realizando uma busca pelos títulos na internet ou consultando o acervo da nossa biblioteca digital.
+
+Vocês conseguem acessar o acervo da biblioteca digital pelo "Fluig > Minha Biblioteca".
+
+Atenciosamente,
+Prof. Evandro.
+
