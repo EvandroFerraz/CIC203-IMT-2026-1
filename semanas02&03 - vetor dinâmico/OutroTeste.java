@@ -1,6 +1,6 @@
 public class OutroTeste{
     public static void main(String[] args){
-        NossoVetor v = new NossoVetor(); // v tem a capacida inicial = 10
+        NossoVetor v = new NossoVetor(); // v tem a capacidade inicial = 10
 
         // adiciona 5 numeros
         v.adiciona(2);
@@ -20,7 +20,7 @@ public class OutroTeste{
         v.adiciona(54);
         v.adiciona(81); // ocupacao = capacidade = 10
 
-        v.adiciona(99); // extrapola a capacidade atual (10) de v e o método redimensiona atualiza a capacidade
+        v.adiciona(99); // extrapola a capacidade atual de v e o método redimensiona aumenta a capacidade para guardar o novo elemento inserido
         System.out.println(v.getCapacidade()); // retorna capacidade = 20, redimensionamento foi usado
 
         // remove 8 elementos
@@ -32,6 +32,6 @@ public class OutroTeste{
         v.remove();
         v.remove();
         v.remove(); // ocupacao = 3
-        System.out.println(v.getCapacidade()); // retorna capacidade = 10, pois redimensiona foi chamado novamente
+        System.out.println(v.getCapacidade()); // retorna capacidade = 10, pois redimensiona foi chamado novamente para reduzir a capacidade do vetor
     }
 }
