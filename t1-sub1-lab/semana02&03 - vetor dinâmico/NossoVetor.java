@@ -45,7 +45,7 @@ public class NossoVetor {
     public void adiciona (int elemento) {
         if (estaCheio()) redimensiona(capacidade*2); // Aumenta a capacidade do vetor se estiver cheio
         // ocupacao++ atua como pós-incremento: 
-        // 1º acessa o índice atual, 2º insere o elemento, 3º incrementa a variável ocupação computando que mais um número foi inserido no vetor
+        // 1º acessa o índice atual, 2º insere o elemento, 3º incrementa a variável ocupacao computando que mais um número foi inserido no vetor
         vetor[ocupacao++] = elemento;
     }
 
@@ -66,7 +66,7 @@ public class NossoVetor {
         return -1; // Elemento não existe no vetor
     }
 
-    // Retorna um valor booleano caso o elemento exista no vetor
+    // Retorna true caso o elemento exista no vetor
     public boolean contains(int elemento){
         for(int i=0; i < ocupacao; i++){
             if(vetor[i] == elemento) return true;
@@ -84,8 +84,7 @@ public class NossoVetor {
         }
         return lista;
     }
-
-    
+  
     // Sobrescrita do método toString() herdado da classe Object. 
     // Permite que o print exiba os dados reais do vetor em vez do seu endereço de memória.
     @Override
