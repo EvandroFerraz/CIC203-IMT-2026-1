@@ -1,6 +1,3 @@
-/**
- * Classe principal (Main) para instanciar e testar as funcionalidades da classe NossoVetor.
- */
 public class TesteNossoVetor {
     public static void main(String[] args) {
         // Instancia um vetor utilizando o construtor 1 (capacidade 10)

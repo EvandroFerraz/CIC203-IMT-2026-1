@@ -1,4 +1,7 @@
 // Herda método toString() da classe Object
+
+import java.util.Random;
+
 public class NossoVetor {
     private int vetor[];  // vetor para armazenar os elementos na memória
     private int ocupacao = 0; // quantidade de elementos efetivamente inseridos no vetor
@@ -84,7 +87,7 @@ public class NossoVetor {
         }
         return lista;
     }
-  
+
     // Sobrescrita do método toString() herdado da classe Object. 
     // Permite que o print exiba os dados reais do vetor em vez do seu endereço de memória.
     @Override
@@ -95,5 +98,29 @@ public class NossoVetor {
             s += vetor[i] + " ";
         }
         return s + "]";
+    }
+
+     // Preenche todo o vetor com números inteiros aleatórios
+     public void preencheVetor(){
+        Random random = new Random();
+        for(int i = 0; i < vetor.length; i++){
+            vetor[i] = random.nextInt(vetor.length*10);
+        }
+        ocupacao = vetor.length;
+    }
+
+    // bubbleSort() para ordenação crescente
+    public void bubbleSort(){
+        // Complexidade quadrática (n^2) no pior caso, sendo n = vetor.length
+        for(int i = 1; i < vetor.length; i++){
+            for(int j = 0; j < vetor.length-i; j++){  
+                if(vetor[j] > vetor[j+1]){
+                    // Troca as posições de vetor[j] e vetor[j+1]
+                    int temp = vetor[j];
+                    vetor[j] = vetor[j+1];
+                    vetor[j+1] = temp;
+                }
+            }
+        }
     }
 }

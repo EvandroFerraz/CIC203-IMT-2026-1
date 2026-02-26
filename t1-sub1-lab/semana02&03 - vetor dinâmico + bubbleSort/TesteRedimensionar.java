@@ -1,4 +1,4 @@
-public class OutroTeste{
+public class TesteRedimensionar{
     public static void main(String[] args){
         
         NossoVetor v = new NossoVetor(); // capacidade = 10
