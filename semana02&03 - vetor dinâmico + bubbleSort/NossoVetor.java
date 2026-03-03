@@ -1,4 +1,7 @@
 // Herda método toString() da classe Object
+
+import java.util.Random;
+
 public class NossoVetor {
     private int vetor[];  // vetor para armazenar os elementos na memória
     private int ocupacao = 0; // quantidade de elementos efetivamente inseridos no vetor
@@ -45,7 +48,7 @@ public class NossoVetor {
     public void adiciona (int elemento) {
         if (estaCheio()) redimensiona(capacidade*2); // Aumenta a capacidade do vetor se estiver cheio
         // ocupacao++ atua como pós-incremento: 
-        // 1º acessa o índice atual, 2º insere o elemento, 3º incrementa a variável ocupação computando que mais um número foi inserido no vetor
+        // 1º acessa o índice atual, 2º insere o elemento, 3º incrementa a variável ocupacao computando que mais um número foi inserido no vetor
         vetor[ocupacao++] = elemento;
     }
 
@@ -66,7 +69,7 @@ public class NossoVetor {
         return -1; // Elemento não existe no vetor
     }
 
-    // Retorna um valor booleano caso o elemento exista no vetor
+    // Retorna true caso o elemento exista no vetor
     public boolean contains(int elemento){
         for(int i=0; i < ocupacao; i++){
             if(vetor[i] == elemento) return true;
@@ -85,7 +88,6 @@ public class NossoVetor {
         return lista;
     }
 
-    
     // Sobrescrita do método toString() herdado da classe Object. 
     // Permite que o print exiba os dados reais do vetor em vez do seu endereço de memória.
     @Override
@@ -96,5 +98,29 @@ public class NossoVetor {
             s += vetor[i] + " ";
         }
         return s + "]";
+    }
+
+     // Preenche todo o vetor com números inteiros aleatórios
+     public void preencheVetor(){
+        Random random = new Random();
+        for(int i = 0; i < vetor.length; i++){
+            vetor[i] = random.nextInt(vetor.length*10);
+        }
+        ocupacao = vetor.length;
+    }
+
+    // bubbleSort() para ordenação crescente
+    public void bubbleSort(){
+        // Complexidade quadrática (n^2) no pior caso, sendo n = vetor.length
+        for(int i = 1; i < vetor.length; i++){
+            for(int j = 0; j < vetor.length-i; j++){  
+                if(vetor[j] > vetor[j+1]){
+                    // Troca as posições de vetor[j] e vetor[j+1]
+                    int temp = vetor[j];
+                    vetor[j] = vetor[j+1];
+                    vetor[j+1] = temp;
+                }
+            }
+        }
     }
 }
