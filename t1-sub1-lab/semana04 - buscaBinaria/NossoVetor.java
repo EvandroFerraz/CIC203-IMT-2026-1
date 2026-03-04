@@ -62,7 +62,7 @@ public class NossoVetor {
     
     // Realiza uma busca linear.
     // Devolve o índice da primeira ocorrência do elemento, ou -1 caso não seja encontrado.
-    public int procuraIndice (int elemento) {
+    public int buscaLinear (int elemento) {
         for (int i = 0; i < ocupacao; i++) {
             if (elemento == vetor[i]) return i;
         }
@@ -122,5 +122,32 @@ public class NossoVetor {
                 }
             }
         }
+    }
+
+    public int buscaBinaria(int valorPesquisado) {
+        int inicio = 0, fim = vetor.length;
+    
+        // Enquanto o índice inicial for menor que o final, faça
+        while (inicio <= fim) {
+            int meio = (inicio + fim) / 2; // calcula o elemento central
+        
+            // Se o valorPesquisado estiver em vetor[meio], retorna o índice
+            if (vetor[meio] == valorPesquisado) {
+                return meio;
+            }
+        
+            // Se valorPesquisado > vetor[meio], descarta a metade esquerda
+            // e atualiza o índice inicial do vetor
+            if (valorPesquisado > vetor[meio]) {
+                inicio = meio + 1;
+            }    
+            // Se valorPesquisado <= vetor[meio], descarta a metade direita
+            // e atualiza o índice final do vetor
+            else {
+                fim = meio - 1;
+            }
+        }
+        // Se o valorPesquisado não for encontrado, retorna -1
+        return -1;
     }
 }
