@@ -77,6 +77,17 @@ public class NossoVetor {
         return -1; // Elemento não existe no vetor
     }
 
+    // Contador de instruções da busca linear
+    public int buscaLinearContador(int elemento){
+        int cont = 0;
+        for(int i=0; i<ocupacao; i++){
+            cont++;
+            if(elemento == vetor[i]) 
+                return cont;
+        }
+        return cont;
+    }
+
     // Retorna true caso o elemento exista no vetor
     public boolean contains(int elemento) {
         for (int i = 0; i < ocupacao; i++) {
@@ -135,6 +146,24 @@ public class NossoVetor {
         }
     }
 
+    // Contador de instruções do bubbleSort
+    public int bubbleSortContador() {
+        int cont = 0;
+        // Complexidade quadrática (n^2) no pior caso, sendo n = vetor.length
+        for (int i = 1; i < vetor.length; i++) {
+            for (int j = 0; j < vetor.length - i; j++) {
+                cont++;
+                if (vetor[j] > vetor[j + 1]) {
+                    // Troca as posições de vetor[j] e vetor[j+1]
+                    int temp = vetor[j];
+                    vetor[j] = vetor[j + 1];
+                    vetor[j + 1] = temp;
+                }
+            }
+        }
+        return cont;
+    }
+
     public int buscaBinaria(int valorPesquisado) {
         int inicio = 0, fim = vetor.length - 1;
 
@@ -158,5 +187,32 @@ public class NossoVetor {
         }
         // Se o valorPesquisado não for encontrado, retorna -1
         return -1;
+    }
+
+    //  Contador de instruções da busca binaria
+    public int buscaBinariaContador(int valorPesquisado) {
+        int inicio = 0, fim = vetor.length - 1, cont = 0;
+
+        // Enquanto o índice inicial for menor que o final, faça
+        while (inicio <= fim) {
+            cont++;
+            int meio = (inicio + fim) / 2; // calcula o elemento central
+
+            // Se o valorPesquisado estiver em vetor[meio], retorna o índice
+            if (vetor[meio] == valorPesquisado) {
+                return cont;
+            }
+
+            // Se valorPesquisado > vetor[meio], descarta a metade esquerda e atualiza o índice inicial do vetor
+            if (valorPesquisado > vetor[meio]) {
+                inicio = meio + 1;
+            }
+            // Se valorPesquisado <= vetor[meio], descarta a metade direita e atualiza o índice final do vetor
+            else {
+                fim = meio - 1;
+            }
+        }
+        // Se o valorPesquisado não for encontrado, retorna -1
+        return cont;
     }
 }
