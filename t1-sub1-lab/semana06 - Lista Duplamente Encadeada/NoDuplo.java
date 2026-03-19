@@ -1,39 +1,20 @@
-// herda de Object
-public class NoDuplo{
+// herda os atributos info e proximo de No
+// herda os getters, setters e toString de No
+public class NoDuplo extends No {
 
-    // encapsulamento
-    private int info; // guardar o valor do nó
-    private NoDuplo proximo; // referência para o próximo nó da lista
-    private NoDuplo anterior; // referência para o nó anterior da lista
+    private No anterior; // referência para o nó anterior da lista
 
-    /// construtor que inicializa o atributo info
-    public NoDuplo(int info){
-        this.info = info;
+    public NoDuplo(int info) {
+        super(info); // executa o construtor da classe mãe, repassando o parâmetro info
     }
 
-    // getters = retornam o valor de um atributo
-    public int getInfo(){
-        return info;
-    }
-    public NoDuplo getProximo(){
-        return proximo;
-    }
-    public NoDuplo getAnterior(){
+    // get = retorna o valor do atributo
+    public No getAnterior() {
         return anterior;
     }
-    // setters = atualiza o valor do atributo
-    public void setInfo(int info){
-        this.info = info;
-    }
-    public void setProximo(NoDuplo proximo){
-        this.proximo = proximo;
-    }
-    public void setAnterior(NoDuplo anterior){
-        this.anterior = anterior;
-    }
 
-    @Override // sobrescrita do método toString()
-    public String toString(){ // define a representação textual de um objeto da classe
-        return "["+info+"]";
+    // set = atualiza o valor do atributo
+    public void setAnterior(No anterior) {
+        this.anterior = anterior;
     }
 }
