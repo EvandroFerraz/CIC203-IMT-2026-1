@@ -2,16 +2,16 @@ public class No{
 
     // atributos
     private int info;
-    private No esquerda; // referencia para a subarvore esquerda do no atual
-    private No direita; // referencia para a subarvore direita do no atual
+    private No esquerda; // representa a subárvore esquerda daquele nó
+    private No direita; // representa a subárvore direita daquele nó
 
-    // Construtor inicializa somente o atributo info
+    // construtor para inicializar o atributo info
     public No(int info){
         this.info = info;
-        // esquerda = direita = null; // todo novo nó inserido na árvore é uma folha
+        // esquerda = direita = null
     }
 
-    // getters
+    //getters
     public int getInfo(){
         return info;
     }
@@ -21,7 +21,7 @@ public class No{
     public No getDireita(){
         return direita;
     }
-    // setters
+    //setters
     public void setInfo(int info){
         this.info = info;
     }
@@ -31,7 +31,7 @@ public class No{
     public void setDireita(No direita){
         this.direita = direita;
     }
-    // toString()
+    //toString()
     public String toString(){
         return info + " ";
     }
