@@ -103,7 +103,7 @@ public class ArvoreBinariaBusca{
         return alturaRec(raiz);
     }
     private int alturaRec(No atual){
-        // Caso Base (critério de parada): se o nó for uma folha, retorna 0
+        // Caso Base (critério de parada): se o no for uma folha, retorna 0
         if(atual.getEsquerda() == null && atual.getDireita() == null)
             return 0;
         
