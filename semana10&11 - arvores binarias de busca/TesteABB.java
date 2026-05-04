@@ -15,7 +15,16 @@ public class TesteABB{
             abbZip.insereRepeticao(n);
         }
 
+        // imprime todos os nós da árvore em ordem crescente
         System.out.println("Arvore Original: \n" + abb);
         System.out.println("Arvore Compactada: \n" + abbZip);
+
+        // imprime a altura das arvores
+        System.out.println("A altura da árvore original: " + abb.altura());
+        System.out.println("A altura da árvore compactada: " + abbZip.altura());
+
+        // imprime o número de nós das árvores
+        System.out.println("O número de nós da árvore original: " + abb.contaNos());
+        System.out.println("O número de nós da árvore compactada: " + abbZip.contaNos());
     }
 }
