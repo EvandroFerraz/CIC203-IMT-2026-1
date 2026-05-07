@@ -160,5 +160,98 @@ public class ArvoreBinariaBusca{
     }
 
     // 3- remover um nó da árvore
-    
+    public boolean remove(int info){
+        if(arvoreVazia()) return false;
+
+        // Queremos remover um nó na raiz
+        if(info == raiz.getInfo()){
+            // Caso1: raiz não tem filhos
+            if(raiz.getEsquerda() == null && raiz.getDireita() == null){ 
+                raiz = null;
+                return true;
+            }
+            // Caso2: raiz só tem filho direito
+            if(raiz.getEsquerda() == null){
+                raiz = raiz.getDireita(); // sobrescrevemos o nó na raiz pelo seu filho direito
+                return true;
+            }
+            // Caso3: raiz só tem filho esquerdo
+            if(raiz.getDireita() == null){
+                raiz = raiz.getEsquerda(); // sobrescrevemos o nó na raiz pelo seu filho esquerdo
+                return true;
+            }
+            // Caso4: raiz possui os 2 filhos
+            No suc = sucessor(raiz);
+            suc.setEsquerda(raiz.getEsquerda());
+            raiz = suc;
+        }else{ // nó para remoção não é raiz, então percorremos a árvore
+            if(info > raiz.getInfo()) // percorre a subárvore direita
+                return removeRec(info, raiz.getDireita(), raiz, true);
+            return removeRec(info, raiz.getEsquerda(), raiz, false); // percorre a subárvore esquerda
+        }
+    }    
+
+    private No sucessor(No atual){
+        No pai = atual;
+        No suc = atual.getDireita();
+        No runner = suc.getEsquerda();
+
+        while(runner != null){
+            pai = suc;
+            suc = runner;
+            runner = runner.getEsquerda();
+        }
+
+        if(suc != atual.getDireita()){
+            pai.setEsquerda(suc.getDireita());
+            suc.setDireita(atual.getDireita());
+        }
+        return suc;
+    }
+
+    private boolean removeRec(int info, No atual, No pai, boolean eFilhoDireita){
+        if(atual == null) return false;
+
+        // Se atual é o nó a ser removido
+        if(info == atual.getInfo()){
+            // Caso1: atual não tem filhos
+            if (atual.getDireita() == null && atual.getEsquerda() == null){
+                if(eFilhoDireita) // atual é subárvore direita
+                    pai.setDireita(null); // removemos o atual atribuindo nulo à subárvore direita de seu pai
+                else
+                    pai.setEsquerda(null); // removemos o atual atribuindo nulo à subárvore esquerda de seu pai
+                return true;
+            }
+            // Caso2: atual só tem um filho esquerdo
+            if(atual.getDireita() == null){ // atual só tem filho esquerdo
+                if(eFilhoDireita) // atual é subárvore direita
+                    pai.setDireita(atual.getEsquerda()) // removemos o atual atribuindo seu filho esquerdo à direita de seu pai
+                else
+                    pai.setEsquerda(atual.getEsquerda()) // removemos o atual atribuindo seu filho esquerdo à esquerda de seu pai
+                return true;
+            }
+            // Caso3: atual só tem um filho direito
+            if(atual.getEsquerda() == null){
+                if(eFilhoDireita)
+                    pai.setDireita(atual.getDireita()); // removemos o atual atribuindo seu filho direito à direita de seu pai
+                else
+                    pai.setEsquerda(atual.getDireita()); // removemos o atual atribuindo seu filho direito à esquerda de seu pai
+                return true;
+            }
+            // Caso4: atual tem os dois filhos
+            No suc = sucessor(atual);
+            suc.setEsquerda(atual.getEsquerda());
+            if(eFilhoDireita)
+                pai.setDireita(suc);
+            else
+                pai.setEsquerda(suc);
+            return true;
+        }
+        // chegamos na linha 250 somente se o nó atual não é o nó que queremos remover
+        if(info > atual.getInfo())
+            return removeRec(info, atual.getDireita(), atual, true);
+        return removeRec(info, atual.getEsquerda(), atual, false);
+    }
+
+    //4 - pesquisa um valor especifico na arvore
 }
