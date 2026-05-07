@@ -69,8 +69,6 @@ public class ArvoreBinariaBusca{
             }
         }
     }
-
-    // método recursivo para percorrer a árvore e inserir novo na posição correta
     
     // Percorre e imprime os nós da árvore (sobrescrita do método toString())
     //@Override
@@ -134,12 +132,8 @@ public class ArvoreBinariaBusca{
        3ª chamada recursiva: contaNosRec(2), não tem filhos então retorna 1.
        4ª chamada recursiva: contaNosRec(7), não tem filhos então retorna 1.
        Com o resultado da 3ª e 4ª chamada, voltamos resolvendo a pilha de recursão
-       - resolve a 2ª chamada: contaNosRec(5), recebe 1 como retorno da 3ª e 4ª chamada
-       e incrementa esses valores na variável "nos", retornando o valor incrementado
-       no retorno. Então, retorna 3.
-       - resolve a 1ª chamada: contaNosRec(8), recebe o 3 como retorno da 2ª chamada
-       e incrementa esse valor na variável "nos", retornando o valor incrementado no
-       retorno. Então, retorna 4.
+       - resolve a 2ª chamada: contaNosRec(5), recebe 1 como retorno da 3ª e 4ª chamada e incrementa esses valores na variável "nos", retornando o valor incrementado. Então, retorna 3.
+       - resolve a 1ª chamada: contaNosRec(8), recebe o 3 como retorno da 2ª chamada e incrementa esse valor na variável "nos", retornando o valor incrementado. Então, retorna 4.
     */
 
     public int contaNos(){  
@@ -252,6 +246,4 @@ public class ArvoreBinariaBusca{
             return removeRec(info, atual.getDireita(), atual, true);
         return removeRec(info, atual.getEsquerda(), atual, false);
     }
-
-    //4 - pesquisa um valor especifico na arvore
 }
