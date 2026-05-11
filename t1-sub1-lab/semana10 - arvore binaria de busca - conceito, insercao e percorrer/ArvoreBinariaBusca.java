@@ -178,6 +178,7 @@ public class ArvoreBinariaBusca{
             No suc = sucessor(raiz);
             suc.setEsquerda(raiz.getEsquerda());
             raiz = suc;
+            return true;
         }else{ // nó para remoção não é raiz, então percorremos a árvore
             if(info > raiz.getInfo()) // percorre a subárvore direita
                 return removeRec(info, raiz.getDireita(), raiz, true);
