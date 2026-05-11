@@ -161,5 +161,103 @@ public class ArvoreBinariaBusca{
     }
 
     //3- remover um nó da árvore
-    
+    // remove e o removeRec
+
+    public boolean remove(int info){
+        if(arvoreVazia()) return false; // não há o que remover se árvore vazia
+
+        // Inicialmente, verificamos se o nó a ser removido é a raiz
+        if(info == raiz.getInfo()){
+            // Caso1: raiz não tem filhos
+            if(raiz.getEsquerda() == null && raiz.getDireita() == null){
+                raiz = null;
+                return true;
+            }
+            // Caso2: raiz só tem um filho direito
+            if(raiz.getEsquerda() == null){
+                raiz = raiz.getDireita(); // sobrescrevemos o nó da raiz por seu filho direito
+                return true;
+            }
+            // Caso3: raiz só tem um filho esquerdo
+            if(raiz.getDireita() == null){
+                raiz = raiz.getEsquerda();
+                return true;
+            }
+            // Caso4: raiz tem dois filhos
+            No suc = sucessor(raiz);
+            suc.setEsquerda(raiz.getEsquerda());
+            raiz = suc; // sobrescreve a raiz pelo sucessor encontrado
+            return true;
+        }else{ // nó para remoção não é a raiz, então percorremos a árvore
+            if(info > raiz.getInfo()) // percorre a subárvore direita
+                return removeRec(info, raiz.getDireita(), raiz, true);
+            return removeRec(info, raiz.getEsquerda(), raiz, false);
+        }
+    }
+
+    // Seleciona entre os filhos do No atual o filho que mantém a estrutura da arvore binaria de busca
+    private No sucessor(No atual){
+        No pai = atual;
+        No suc = atual.getDireita();
+        No runner = suc.getEsquerda();    
+
+        while(runner != null){
+            pai = suc;
+            suc = runner;
+            runner = runner.getEsquerda();
+        }
+
+        if(suc != atual.getDireita()){
+            pai.setEsquerda(suc.getDireita());
+            suc.setDireita(atual.getDireita());
+        }
+        return suc;
+    }
+
+    private boolean removeRec(int info, No atual, No pai, boolean eFilhoDireito){
+        if(atual == null) return false; // Caso base: chegamos em uma folha
+
+        // Se o atual é o nó a ser removido
+        if(atual.getInfo() == info){
+            //Caso1: atual não tem filhos
+            if(atual.getDireita() == null && atual.getEsquerda() == null){
+                if(eFilhoDireito) // atual é subárvore direita
+                    pai.setDireita(null); // removemos o atual atribuindo nulo à subárvore direita de seu pai
+                else // atual é subárvore esquerda
+                    pai.setEsquerda(null);
+                return true;
+            }
+
+            //Caso2: atual só tem um filho esquerdo
+            if(atual.getDireita() == null){
+                if(eFilhoDireito) // atual é subárvore direita
+                    pai.setDireita(atual.getEsquerda()); // removemos o atual atribuindo seu filho esquerdo à direita de seu pai
+                else // atual é subárvore esquerda
+                    pai.setEsquerda(atual.getEsquerda()); // removemos o atual atribuindo seu filho esquerdo à esquerda de seu pai
+                return true;
+            }
+
+            //Caso3: atual só tem um filho direito
+            if(atual.getEsquerda() == null){
+                if(eFilhoDireito) // atual é subárvore direita
+                    pai.setDireita(atual.getDireita()); // removemos o atual atribuindo seu filho direito à direita de seu pai
+                else // atual é subárvore esquerda
+                    pai.setEsquerda(atual.getDireita()); // removemos o atual atribuindo seu filho direito à esquerda de seu pai
+                return true;
+            }
+
+            //Caso4: atual tem os dois filhos
+            No suc = sucessor(atual);
+            suc.setEsquerda(atual.getEsquerda());
+            if(eFilhoDireito)
+                pai.setDireita(suc);
+            else
+                pai.setEsquerda(suc);
+            return true;
+        }
+        // chegamos na linha atual somenre se o nó atual não é o nó que queremos remover
+        if(info > atual.getInfo()) // percorremos a subárvore direita
+            return removeRec(info, atual.getDireita(), atual, true);
+        return removeRec(info, atual.getEsquerda(), atual, false);
+    }
 }
