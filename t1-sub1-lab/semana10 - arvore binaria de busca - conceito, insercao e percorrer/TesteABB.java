@@ -1,27 +1,39 @@
 import java.util.Random;
 
-public class TesteABB {
-
-    public static void main(String args[]) {
-
+public class TesteABB{
+    
+    public static void main(String args[]){
+        
         Random random = new Random();
         ArvoreBinariaBusca abb = new ArvoreBinariaBusca(); // raiz = null, nasce vazia
         ArvoreBinariaBusca abbZip = new ArvoreBinariaBusca(); // raiz = null, nasce vazia
 
         // Preenche a árvore
-        for (int i = 1; i <= 100; i++) {
+        abb.insere(50);
+        abbZip.insereRepeticao(50);
+        for(int i = 2; i <= 100; i++){
             int n = random.nextInt(100); // entre 0 e 99
             abb.insere(n);
             abbZip.insereRepeticao(n);
         }
 
+        // imprime todos os nós da árvore em ordem crescente
         System.out.println("Arvore Original: \n" + abb);
         System.out.println("Arvore Compactada: \n" + abbZip);
 
-        System.out.println("Altura da Original: \n" + abb.altura());
-        System.out.println("Altura da Compactada: \n" + abbZip.altura());
+        // imprime a altura das arvores
+        System.out.println("A altura da árvore original: " + abb.altura());
+        System.out.println("A altura da árvore compactada: " + abbZip.altura());
 
-        System.out.println("Nós da Original: \n" + abb.contaNos());
-        System.out.println("Nós da Compactada: \n" + abbZip.contaNos());
+        // imprime o número de nós das árvores
+        System.out.println("O número de nós da árvore original: " + abb.contaNos());
+        System.out.println("O número de nós da árvore compactada: " + abbZip.contaNos());
+
+        // remove o nó 50 da árvore
+        abb.remove(50);
+        abbZip.remove(50);
+        // imprime todos os nós da árvore em ordem crescente
+        System.out.println("Arvore Original sem o 50: \n" + abb);
+        System.out.println("Arvore Compactada sem o 50: \n" + abbZip);
     }
 }
